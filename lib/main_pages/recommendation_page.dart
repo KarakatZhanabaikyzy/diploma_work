@@ -1,7 +1,5 @@
-// В файле style_widget.dart
 import 'package:flutter/material.dart';
-import 'package:diploma_work/widgets/weather_widget.dart';
-import 'package:diploma_work/widgets/style_widget.dart';
+import 'package:diploma_work/main_pages/weather_page.dart';
 
 class RecommendationPage extends StatelessWidget {
 
@@ -187,7 +185,7 @@ class RecommendationPage extends StatelessWidget {
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => WeatherWidget()), // Замените AnotherPage на реальный класс страницы
+                        MaterialPageRoute(builder: (context) => WeatherPage()), // Замените AnotherPage на реальный класс страницы
                       );// Действие при нажатии на первую кнопку
                     },
                   ),

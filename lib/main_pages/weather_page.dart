@@ -1,8 +1,8 @@
-import 'package:diploma_work/widgets/recommendation_widget.dart';
+import 'package:diploma_work/main_pages/recommendation_page.dart';
 import 'package:flutter/material.dart';
-import 'package:diploma_work/widgets/style_widget.dart';
+import 'package:diploma_work/main_pages/style_page.dart';
 
-class WeatherWidget extends StatelessWidget {
+class WeatherPage extends StatelessWidget {
   final double topContainerHeight;
   final double topContainerWidth;
   final double middleContainerHeight;
@@ -10,7 +10,7 @@ class WeatherWidget extends StatelessWidget {
   final double bottomContainerHeight;
   final double bottomContainerWidth;
 
-  WeatherWidget({
+  WeatherPage({
     Key? key,
     this.topContainerHeight = 160.0,
     this.topContainerWidth = double.infinity,

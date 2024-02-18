@@ -1,6 +1,6 @@
-import 'package:diploma_work/widgets/weather_widget.dart';
+import 'package:diploma_work/main_pages/weather_page.dart';
 import 'package:flutter/material.dart';
-import 'package:diploma_work/widgets/recommendation_widget.dart';
+import 'package:diploma_work/main_pages/recommendation_page.dart';
 
 class StylePage extends StatelessWidget {
   final double topContainerHeight;
@@ -133,7 +133,7 @@ class StylePage extends StatelessWidget {
                       onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => WeatherWidget()), // Замените AnotherPage на реальный класс страницы
+                          MaterialPageRoute(builder: (context) => WeatherPage()), // Замените AnotherPage на реальный класс страницы
                         );// Действие при нажатии на первую кнопку
                       },
                       style: ElevatedButton.styleFrom(
