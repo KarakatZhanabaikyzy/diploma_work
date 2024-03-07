@@ -3,6 +3,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../widgets/weather_widget.dart';
 import 'Registr.dart';
 
 class LoginPage extends StatelessWidget {
@@ -57,6 +58,10 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => WeatherWidget()),
+                );
                 // Добавьте логику входа
               },
               child: Text('Login'),
@@ -83,7 +88,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 // Добавьте логику для входа через Google
               },
-              icon: Image.asset('images/google_icon.png', width: 24), // Укажите путь к вашему изображению Google
+              icon: Image.asset('assets/images/google_icon.png', width: 24), // Укажите путь к вашему изображению Google
               label: Text('Sign up with Google'),
               style: TextButton.styleFrom(
                 primary: Colors.black,

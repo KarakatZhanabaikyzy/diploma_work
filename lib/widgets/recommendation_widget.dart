@@ -1,4 +1,5 @@
 // В файле style_widget.dart
+import 'package:diploma_work/widgets/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:diploma_work/widgets/weather_widget.dart';
 import 'package:diploma_work/widgets/style_widget.dart';
@@ -202,7 +203,10 @@ class RecommendationPage extends StatelessWidget {
                     icon: Image.asset('assets/images/profile_icon.png'),
                     iconSize: 28,
                     onPressed: () {
-                      // Действие при нажатии на третью кнопку
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ProfilePage()), // Замените AnotherPage на реальный класс страницы
+                      );//  ProfilePage // Действие при нажатии на третью кнопку
                     },
                   ),
                 ],
