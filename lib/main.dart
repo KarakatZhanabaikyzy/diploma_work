@@ -1,30 +1,19 @@
-import 'package:diploma_work/authorization_pages/welcome.dart';
+import 'package:diploma_work/routes/routing.dart';
 import 'package:flutter/material.dart';
-import 'main_pages/weather_page.dart';
 
-void main() => runApp(WeatherApp());
 
-class WeatherApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Weather App',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MainPage(),
-    );
-  }
+void main() {
+
+  runApp(const WeatherWardrobe());
 }
 
-class MainPage extends StatelessWidget {
+class WeatherWardrobe extends StatelessWidget {
+  const WeatherWardrobe({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: WeatherPage(),
-        //child: WelcomeScreen(),
-      ),
+    return MaterialApp.router(
+      routerConfig: router,
     );
   }
 }
