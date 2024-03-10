@@ -1,6 +1,6 @@
 import 'package:diploma_work/main_pages/weather_page.dart';
 import 'package:flutter/material.dart';
-import 'package:diploma_work/main_pages/recommendation_page.dart';
+import 'package:go_router/go_router.dart';
 
 class CategoryItem {
   final String name;
@@ -194,10 +194,7 @@ class StylePage extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => WeatherPage()), // Замените AnotherPage на реальный класс страницы
-                        );// Действие при нажатии на первую кнопку
+                        context.go('/weather');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.grey,
@@ -220,11 +217,7 @@ class StylePage extends StatelessWidget {
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {
-                        // Действие при нажатии на вторую кнопку, например переход на другую страницу
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => RecommendationPage()), // Замените AnotherPage на реальный класс страницы
-                        );
+                        context.go('/recommendation');
                       },
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.lightBlue.shade900, // Можно выбрать другой цвет для отличия

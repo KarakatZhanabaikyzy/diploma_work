@@ -26,7 +26,6 @@ class ProfilePage extends StatelessWidget {
           _buildExitButton(context),
         ],
       ),
-      bottomNavigationBar: _buildBottomNavigationBar(context),
     );
   }
 
@@ -92,54 +91,6 @@ class ProfilePage extends StatelessWidget {
           ),
           padding: EdgeInsets.symmetric(vertical: 12),
         ),
-      ),
-    );
-  }
-
-  Widget _buildBottomNavigationBar(BuildContext context) {
-    return Container(
-      height: 60,
-      width: double.infinity,
-      margin: EdgeInsets.fromLTRB(10, 10, 10, 0),
-      padding: EdgeInsets.all(5),
-      decoration: BoxDecoration(
-        color: Colors.lightBlue.shade900,
-        borderRadius: BorderRadius.all(Radius.circular(15)),
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: <Widget>[
-          IconButton(
-            icon: Image.asset('assets/images/weather_icon.png'),
-            iconSize: 28,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>WeatherPage()),//те AnotherPage на реальный класс страницы
-              );//  P                 // Действие при нажатии на первую кнопку
-            },
-          ),
-          IconButton(
-            icon: Image.asset('assets/images/shirt_icon.png'),
-            iconSize: 28,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) =>RecommendationPage()),//те AnotherPage на реальный класс страницы
-              );//  P              // Действие при нажатии на вторую кнопку
-            },
-          ),
-          IconButton(
-            icon: Image.asset('assets/images/profile_icon.png'),
-            iconSize: 28,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ProfilePage()), // Замените AnotherPage на реальный класс страницы
-              );//  P
-            },
-          ),
-        ],
       ),
     );
   }

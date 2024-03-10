@@ -1,7 +1,6 @@
-import 'package:diploma_work/main_pages/recommendation_page.dart';
 import 'package:flutter/material.dart';
-import 'package:diploma_work/main_pages/style_page.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:go_router/go_router.dart';
 
 
 
@@ -204,10 +203,7 @@ class WeatherPage extends StatelessWidget {
               // Задает отступы: слева 10, сверху 20, справа 30, снизу 40
               child: ElevatedButton(
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => StylePage()),
-                  );
+                  context.go('/style');
                 },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.lightBlue.shade900,
@@ -234,52 +230,6 @@ class WeatherPage extends StatelessWidget {
                     ),
                   ),
                 ),
-              ),
-            ),
-
-            //Нижний контейнер
-            Container(
-              height: bottomContainerHeight,
-              width: bottomContainerWidth,
-              margin: const EdgeInsets.fromLTRB(15, 25, 15, 0),
-              // Настраиваемые отступы для контейнера
-              padding: const EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: Colors.lightBlue.shade900,
-                borderRadius: const BorderRadius.all(
-                    Radius.circular(15)), // Настраиваемый радиус скругления
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  IconButton(
-                    icon:
-                        Image.asset('assets/images/weather_iconInThatPage.png'),
-                    iconSize: 28,
-                    onPressed: () {
-                      // Действие при нажатии на первую кнопку
-                    },
-                  ),
-                  IconButton(
-                    icon: Image.asset('assets/images/shirt_icon.png'),
-                    iconSize: 28,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                RecommendationPage()), // Замените AnotherPage на реальный класс страницы
-                      ); // Действие при нажатии на вторую кнопку
-                    },
-                  ),
-                  IconButton(
-                    icon: Image.asset('assets/images/profile_icon.png'),
-                    iconSize: 28,
-                    onPressed: () {
-                      // Действие при нажатии на третью кнопку
-                    },
-                  ),
-                ],
               ),
             ),
           ],
