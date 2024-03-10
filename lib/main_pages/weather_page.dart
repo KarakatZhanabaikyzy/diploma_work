@@ -13,9 +13,9 @@ class WeatherPage extends StatelessWidget {
 
   WeatherPage({
     Key? key,
-    this.topContainerHeight = 160.0,
+    this.topContainerHeight = 120.0,
     this.topContainerWidth = double.infinity,
-    this.middleContainerHeight = 420.0,
+    this.middleContainerHeight = 240.0,
     this.middleContainerWidth = double.infinity,
     this.bottomContainerHeight = 60.0,
     this.bottomContainerWidth = double.infinity,
@@ -34,7 +34,7 @@ class WeatherPage extends StatelessWidget {
             Container(
               height: topContainerHeight,
               width: topContainerWidth,
-              margin: const EdgeInsets.only(top: 0, bottom: 15, right: 0, left: 0),
+              margin: const EdgeInsets.only(top: 0, bottom: 8, right: 0, left: 0),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -56,27 +56,33 @@ class WeatherPage extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 20),
                   Text(
                     'Astana, Kazakhstan',
                     style: TextStyle(
                         fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey.shade700),
+                        //fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade800),
                   ),
-                  const SizedBox(height: 2),
+                  //const SizedBox(height: 1),
                   const Text(
                     'Today, 11 feb',
-                    style: TextStyle(fontSize: 35.0, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 21.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                 ],
               ),
             ),
-            // Нижний контейнер
+
+
+
+            // Средний контейнер
             Container(
               height: middleContainerHeight,
               width: middleContainerWidth,
-              margin: const EdgeInsets.only(top: 25, bottom: 15, right: 10, left: 10),
+              margin: const EdgeInsets.only(top: 10, bottom: 5, right: 15, left: 15),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -102,25 +108,34 @@ class WeatherPage extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Image.asset('assets/images/weatherBig.png', width: 165.0),
-                      const SizedBox(width: 40),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, left: 20), // Добавляет отступ сверху
+                        child: Image.asset('assets/images/weatherBig.png', width: 100.0),
+                      ),
+                      const SizedBox(width: 50),
                       Text(
-                        '-14°',
+                        'Sunny',
                         style: TextStyle(
-                            fontSize: 75.0,
+                            fontSize: 40.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.lightBlue.shade900),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 60),
+
+                  const SizedBox(height: 5),
                   const Wrap(
                     spacing: 20,
                     runSpacing: 20,
                     alignment: WrapAlignment.spaceBetween,
                     children: <Widget>[
+                      WeatherParameter(
+                        imagePath: 'assets/images/temperature.png',
+                        label: 'Temperature',
+                        value: '15°',
+                      ),
                       WeatherParameter(
                         imagePath: 'assets/images/wind.png',
                         label: 'Wind-speed',
@@ -131,16 +146,12 @@ class WeatherPage extends StatelessWidget {
                         label: 'Humidity',
                         value: '40%',
                       ),
-                      WeatherParameter(
-                        imagePath: 'assets/images/visibility.png',
-                        label: 'Visability',
-                        value: '29 km',
-                      ),
                     ],
                   ),
                 ],
               ),
             ),
+
             // Кнопка "получить рекомендации"
             Padding(
               padding: const EdgeInsets.fromLTRB(10, 50, 10, 20),
@@ -245,14 +256,14 @@ class WeatherParameter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         children: <Widget>[
-          Image.asset(imagePath, width: 40),
+          Image.asset(imagePath, width: 30),
           const SizedBox(height: 8),
           Text(
             label,
@@ -262,7 +273,7 @@ class WeatherParameter extends StatelessWidget {
           Text(
             value,
             style: TextStyle(
-                fontSize: 27.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.lightBlue.shade900),
           ),
