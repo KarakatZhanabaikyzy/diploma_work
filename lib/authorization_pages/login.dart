@@ -1,9 +1,5 @@
-
-
-
 import 'package:flutter/material.dart';
-
-import '../widgets/weather_widget.dart';
+import 'package:diploma_work/main_pages/weather_page.dart';
 import 'Registr.dart';
 
 class LoginPage extends StatelessWidget {
@@ -60,7 +56,7 @@ class LoginPage extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => WeatherWidget()),
+                  MaterialPageRoute(builder: (context) => WeatherPage()),
                 );
                 // Добавьте логику входа
               },

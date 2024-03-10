@@ -1,8 +1,4 @@
-<<<<<<< HEAD:lib/main_pages/recommendation_page.dart
-=======
-// В файле style_widget.dart
-import 'package:diploma_work/widgets/profile.dart';
->>>>>>> 25dafc75a6f55317806fdc4ef21765ba7233b432:lib/widgets/recommendation_widget.dart
+import 'package:diploma_work/main_pages/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:diploma_work/main_pages/weather_page.dart';
 

@@ -2,6 +2,7 @@ import 'package:diploma_work/main_pages/recommendation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:diploma_work/main_pages/style_page.dart';
 
+
 class WeatherPage extends StatelessWidget {
   final double topContainerHeight;
   final double topContainerWidth;
@@ -209,7 +210,7 @@ class WeatherPage extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) =>
                                 RecommendationPage()), // Замените AnotherPage на реальный класс страницы
-                      ); // Действие при нажатии на первую кнопку
+                      ); // Действие при нажатии на вторую кнопку
                     },
                   ),
                   IconButton(
