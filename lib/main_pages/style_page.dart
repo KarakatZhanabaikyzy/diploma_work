@@ -2,9 +2,61 @@ import 'package:diploma_work/main_pages/weather_page.dart';
 import 'package:flutter/material.dart';
 import 'package:diploma_work/main_pages/recommendation_page.dart';
 
+class CategoryItem {
+  final String name;
+  final String imagePath;
+
+  CategoryItem(this.name, this.imagePath);
+}
+
+class Category {
+  final String name;
+  final List<CategoryItem> items;
+
+  Category(this.name, this.items);
+}
+
+
 class StylePage extends StatelessWidget {
   final double topContainerHeight;
   final double topContainerWidth;
+
+  final List<Category> categories = [
+    Category(
+        'Casual',
+        [
+          CategoryItem('Go to the cinema', 'assets/images/item1.png'),
+          CategoryItem('Walk around', 'assets/images/item2.png'),
+          CategoryItem('Shopping', 'assets/images/item3.png'),
+        ]
+    ),
+    Category(
+        'Business',
+        [
+          CategoryItem('Ячейка A', 'assets/images/itemA.png'),
+          CategoryItem('Ячейка B', 'assets/images/itemB.png'),
+          CategoryItem('Ячейка C', 'assets/images/itemC.png'),
+        ]
+    ),
+    Category(
+        'Elegant',
+        [
+          CategoryItem('Ячейка A', 'assets/images/itemA.png'),
+          CategoryItem('Ячейка B', 'assets/images/itemB.png'),
+          CategoryItem('Ячейка C', 'assets/images/itemC.png'),
+        ]
+    ),
+    Category(
+        'Sporty',
+        [
+          CategoryItem('Ячейка A', 'assets/images/itemA.png'),
+          CategoryItem('Ячейка B', 'assets/images/itemB.png'),
+          CategoryItem('Ячейка C', 'assets/images/itemC.png'),
+        ]
+    ),
+    // Добавьте другие категории и элементы по аналогии
+  ];
+
 
   StylePage({
     Key? key,
@@ -81,40 +133,49 @@ class StylePage extends StatelessWidget {
               ),
             ),
 
-            // Отступы вокруг GridView
-            Padding(
-              padding: EdgeInsets.only(
-                top: 0,
-                bottom: 20,
-                right: 10,
-                left: 10,
-              ),
 
-              child: GridView.builder(
+
+
+            // Внутри Padding перед кнопками "Назад" и "Далее"
+            // Внутри Padding перед кнопками "Назад" и "Далее"
+            Padding(
+              padding: EdgeInsets.symmetric(vertical: 20, horizontal: 10),
+              child: ListView.builder(
                 physics: NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 1,
-                ),
-                itemCount: 10,
-                itemBuilder: (BuildContext context, int index) {
-                  String imagePath = 'assets/images/style_$index.png';
-                  return GestureDetector(
-                    onTap: () {
-                      // Действие при тапе на элемент сетки
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        image: DecorationImage(
-                          image: AssetImage(imagePath),
-                          fit: BoxFit.cover,
-                        ),
+                itemCount: categories.length,
+                itemBuilder: (context, index) {
+                  return ExpansionTile(
+                    title: Text(
+                      categories[index].name,
+                      style: TextStyle(
+                        fontSize: 20, // Устанавливаем размер текста заголовка
+                        fontWeight: FontWeight.bold, // Делаем текст заголовка жирным
                       ),
                     ),
+                    children: categories[index].items.map((item) {
+                      return InkWell(
+                        onTap: () {
+                          // Действие при нажатии на элемент
+                          print("${item.name} tapped!");
+                        },
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Image.asset(item.imagePath, width: 400, height: 400), // Указываем размер изображения
+                            Padding(
+                              padding: const EdgeInsets.only(top: 8.0), // Добавляем небольшой отступ сверху для текста
+                              child: Text(
+                                item.name,
+                                style: TextStyle(
+                                  fontSize: 23, // Устанавливаем размер текста элемента
+                                ),
+                              ),
+                            ), // Текст под изображением
+                          ],
+                        ),
+                      );
+                    }).toList(),
                   );
                 },
               ),
@@ -123,9 +184,11 @@ class StylePage extends StatelessWidget {
 
 
 
-            // buttons "back" AND "again"
+
+
+            // buttons "back" AND "next"
             Padding(
-              padding: EdgeInsets.fromLTRB(10, 30, 10, 60),
+              padding: EdgeInsets.fromLTRB(10, 30, 10, 20),
               child: Row(
                 children: [
                   Expanded(
@@ -173,7 +236,7 @@ class StylePage extends StatelessWidget {
                       child: Padding(
                         padding: EdgeInsets.fromLTRB(10, 10, 10, 10), // Увеличиваем высоту кнопки
                         child: Text(
-                          'Save',
+                          'Next',
                           style: TextStyle(fontSize: 20, color: Colors.white),
                         ),
                       ),
@@ -185,39 +248,6 @@ class StylePage extends StatelessWidget {
 
           ],
         ),
-      ),
-    );
-  }
-}
-
-class StyleParameter extends StatelessWidget {
-  final String imagePath;
-  final String label;
-  final String value;
-
-  const StyleParameter({
-    Key? key,
-    required this.imagePath,
-    required this.label,
-    required this.value,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.9),
-        borderRadius: BorderRadius.circular(15),
-      ),
-      child: Column(
-        children: <Widget>[
-          Image.asset(imagePath, width: 40),
-          SizedBox(height: 8),
-          Text(label, style: TextStyle(fontSize: 16.0, color: Colors.lightBlue.shade900)),
-          SizedBox(height: 4),
-          Text(value, style: TextStyle(fontSize: 27.0, fontWeight: FontWeight.bold, color: Colors.lightBlue.shade900)),
-        ],
       ),
     );
   }
