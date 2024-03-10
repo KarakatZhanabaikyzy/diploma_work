@@ -1,6 +1,8 @@
 import 'package:diploma_work/main_pages/recommendation_page.dart';
 import 'package:flutter/material.dart';
 import 'package:diploma_work/main_pages/style_page.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
 
 
 class WeatherPage extends StatelessWidget {
@@ -152,9 +154,53 @@ class WeatherPage extends StatelessWidget {
               ),
             ),
 
+            // Добавление нового контейнера с каруселью изображений и текстом здесь
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10), // Добавляем небольшой отступ между текстом и каруселью
+                    child: Text(
+                      "Liked outfits for today",
+                      style: TextStyle(
+                        fontSize: 24.0, // Размер шрифта
+                        fontWeight: FontWeight.bold, // Жирность шрифта
+                        color: Colors.black, // Цвет текста
+                      ),
+                    ),
+                  ),
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 200.0,
+                      autoPlay: true,
+                      aspectRatio: 16/9,
+                      enlargeCenterPage: true,
+                    ),
+                    items: [1,2,3,4].map((i) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                            ),
+                            child: Image.asset('assets/images/photoLook$i.png', fit: BoxFit.cover), // Убедитесь, что у вас есть эти изображения в папке assets
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+
+
+
             // Кнопка "получить рекомендации"
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 50, 10, 20),
+              padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
               // Задает отступы: слева 10, сверху 20, справа 30, снизу 40
               child: ElevatedButton(
                 onPressed: () {
@@ -190,10 +236,12 @@ class WeatherPage extends StatelessWidget {
                 ),
               ),
             ),
+
+            //Нижний контейнер
             Container(
               height: bottomContainerHeight,
               width: bottomContainerWidth,
-              margin: const EdgeInsets.fromLTRB(10, 25, 10, 0),
+              margin: const EdgeInsets.fromLTRB(15, 25, 15, 0),
               // Настраиваемые отступы для контейнера
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
