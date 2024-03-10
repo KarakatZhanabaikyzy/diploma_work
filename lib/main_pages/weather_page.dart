@@ -33,8 +33,8 @@ class WeatherPage extends StatelessWidget {
             Container(
               height: topContainerHeight,
               width: topContainerWidth,
-              margin: EdgeInsets.only(top: 0, bottom: 15, right: 0, left: 0),
-              padding: EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 0, bottom: 15, right: 0, left: 0),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -45,17 +45,17 @@ class WeatherPage extends StatelessWidget {
                     Colors.yellow.shade800, // Более темный оттенок желтого
                   ],
                 ),
-                borderRadius: BorderRadius.only(
+                borderRadius: const BorderRadius.only(
                   topLeft: Radius.circular(0),
                   topRight: Radius.circular(0),
                   bottomLeft: Radius.circular(80),
-                  bottomRight: Radius.circular(80),
+                  bottomRight: const Radius.circular(80),
                 ),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  SizedBox(height: 28),
+                  const SizedBox(height: 28),
                   Text(
                     'Astana, Kazakhstan',
                     style: TextStyle(
@@ -63,8 +63,8 @@ class WeatherPage extends StatelessWidget {
                         fontWeight: FontWeight.bold,
                         color: Colors.grey.shade700),
                   ),
-                  SizedBox(height: 2),
-                  Text(
+                  const SizedBox(height: 2),
+                  const Text(
                     'Today, 11 feb',
                     style: TextStyle(fontSize: 35.0, color: Colors.black),
                   ),
@@ -75,8 +75,8 @@ class WeatherPage extends StatelessWidget {
             Container(
               height: middleContainerHeight,
               width: middleContainerWidth,
-              margin: EdgeInsets.only(top: 25, bottom: 15, right: 10, left: 10),
-              padding: EdgeInsets.all(20),
+              margin: const EdgeInsets.only(top: 25, bottom: 15, right: 10, left: 10),
+              padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
@@ -93,7 +93,7 @@ class WeatherPage extends StatelessWidget {
                     color: Colors.blue.withOpacity(0.4),
                     spreadRadius: 4,
                     blurRadius: 5,
-                    offset: Offset(0, 3),
+                    offset: const Offset(0, 3),
                   ),
                 ],
               ),
@@ -104,7 +104,7 @@ class WeatherPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image.asset('assets/images/weatherBig.png', width: 165.0),
-                      SizedBox(width: 40),
+                      const SizedBox(width: 40),
                       Text(
                         '-14°',
                         style: TextStyle(
@@ -114,8 +114,8 @@ class WeatherPage extends StatelessWidget {
                       ),
                     ],
                   ),
-                  SizedBox(height: 60),
-                  Wrap(
+                  const SizedBox(height: 60),
+                  const Wrap(
                     spacing: 20,
                     runSpacing: 20,
                     alignment: WrapAlignment.spaceBetween,
@@ -142,7 +142,7 @@ class WeatherPage extends StatelessWidget {
             ),
             // Кнопка "получить рекомендации"
             Padding(
-              padding: EdgeInsets.fromLTRB(10, 50, 10, 20),
+              padding: const EdgeInsets.fromLTRB(10, 50, 10, 20),
               // Задает отступы: слева 10, сверху 20, справа 30, снизу 40
               child: ElevatedButton(
                 onPressed: () {
@@ -163,7 +163,7 @@ class WeatherPage extends StatelessWidget {
                   padding: EdgeInsets
                       .zero, // Установка внутренних отступов в ноль для корректного отображения размеров
                 ),
-                child: SizedBox(
+                child: const SizedBox(
                   width: 385, // Желаемая ширина кнопки
                   height: 60, // Желаемая высота кнопки
                   child: Center(
@@ -181,12 +181,12 @@ class WeatherPage extends StatelessWidget {
             Container(
               height: bottomContainerHeight,
               width: bottomContainerWidth,
-              margin: EdgeInsets.fromLTRB(10, 25, 10, 0),
+              margin: const EdgeInsets.fromLTRB(10, 25, 10, 0),
               // Настраиваемые отступы для контейнера
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
                 color: Colors.lightBlue.shade900,
-                borderRadius: BorderRadius.all(
+                borderRadius: const BorderRadius.all(
                     Radius.circular(15)), // Настраиваемый радиус скругления
               ),
               child: Row(
@@ -244,7 +244,7 @@ class WeatherParameter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(15),
@@ -252,12 +252,12 @@ class WeatherParameter extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.asset(imagePath, width: 40),
-          SizedBox(height: 8),
+          const SizedBox(height: 8),
           Text(
             label,
             style: TextStyle(fontSize: 16.0, color: Colors.lightBlue.shade900),
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Text(
             value,
             style: TextStyle(

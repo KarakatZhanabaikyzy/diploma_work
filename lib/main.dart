@@ -1,3 +1,4 @@
+import 'package:diploma_work/ui/welcome.dart';
 import 'package:flutter/material.dart';
 import 'main_pages/weather_page.dart';
 
@@ -21,7 +22,11 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
+<<<<<<< HEAD
         child: WeatherPage(),
+=======
+        child: WelcomeScreen(),
+>>>>>>> 25dafc75a6f55317806fdc4ef21765ba7233b432
       ),
     );
   }

@@ -23,7 +23,7 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 16),
             Image.asset(
-              "images/welcome.png",
+              "assets/images/welcome.png",
               width: 200,
               fit: BoxFit.cover,
             ),
@@ -38,7 +38,7 @@ class WelcomeScreen extends StatelessWidget {
                 letterSpacing: 1,
               ),
             ),
-            const SizedBox(height: 40), // Отступ перед кнопками
+            const SizedBox(height: 40),
             buildButton(context, "Login", const Color(0xFFFFCC70), () {
               Navigator.push(
                 context,
