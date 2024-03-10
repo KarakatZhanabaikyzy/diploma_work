@@ -1,5 +1,5 @@
-import 'package:diploma_work/widgets/recommendation_widget.dart';
-import 'package:diploma_work/widgets/weather_widget.dart';
+import 'package:diploma_work/main_pages/recommendation_page.dart';
+import 'package:diploma_work/main_pages/weather_page.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -115,7 +115,7 @@ class ProfilePage extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) =>WeatherWidget()),//те AnotherPage на реальный класс страницы
+                MaterialPageRoute(builder: (context) =>WeatherPage()),//те AnotherPage на реальный класс страницы
               );//  P                 // Действие при нажатии на первую кнопку
             },
           ),

@@ -1,8 +1,11 @@
-import 'package:diploma_work/widgets/recommendation_widget.dart';
+import 'package:diploma_work/main_pages/recommendation_page.dart';
 import 'package:flutter/material.dart';
-import 'package:diploma_work/widgets/style_widget.dart';
+import 'package:diploma_work/main_pages/style_page.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
-class WeatherWidget extends StatelessWidget {
+
+
+class WeatherPage extends StatelessWidget {
   final double topContainerHeight;
   final double topContainerWidth;
   final double middleContainerHeight;
@@ -10,11 +13,11 @@ class WeatherWidget extends StatelessWidget {
   final double bottomContainerHeight;
   final double bottomContainerWidth;
 
-  WeatherWidget({
+  WeatherPage({
     Key? key,
-    this.topContainerHeight = 160.0,
+    this.topContainerHeight = 120.0,
     this.topContainerWidth = double.infinity,
-    this.middleContainerHeight = 420.0,
+    this.middleContainerHeight = 240.0,
     this.middleContainerWidth = double.infinity,
     this.bottomContainerHeight = 60.0,
     this.bottomContainerWidth = double.infinity,
@@ -33,7 +36,7 @@ class WeatherWidget extends StatelessWidget {
             Container(
               height: topContainerHeight,
               width: topContainerWidth,
-              margin: const EdgeInsets.only(top: 0, bottom: 15, right: 0, left: 0),
+              margin: const EdgeInsets.only(top: 0, bottom: 8, right: 0, left: 0),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -55,27 +58,33 @@ class WeatherWidget extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
-                  const SizedBox(height: 28),
+                  const SizedBox(height: 20),
                   Text(
                     'Astana, Kazakhstan',
                     style: TextStyle(
                         fontSize: 20.0,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.grey.shade700),
+                        //fontWeight: FontWeight.bold,
+                        color: Colors.grey.shade800),
                   ),
-                  const SizedBox(height: 2),
+                  //const SizedBox(height: 1),
                   const Text(
                     'Today, 11 feb',
-                    style: TextStyle(fontSize: 35.0, color: Colors.black),
+                    style: TextStyle(
+                        fontSize: 21.0,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black),
                   ),
                 ],
               ),
             ),
-            // Нижний контейнер
+
+
+
+            // Средний контейнер
             Container(
               height: middleContainerHeight,
               width: middleContainerWidth,
-              margin: const EdgeInsets.only(top: 25, bottom: 15, right: 10, left: 10),
+              margin: const EdgeInsets.only(top: 10, bottom: 5, right: 15, left: 15),
               padding: const EdgeInsets.all(20),
               decoration: BoxDecoration(
                 gradient: LinearGradient(
@@ -101,25 +110,34 @@ class WeatherWidget extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.start,
                     children: <Widget>[
-                      Image.asset('assets/images/weatherBig.png', width: 165.0),
-                      const SizedBox(width: 40),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 0, left: 20), // Добавляет отступ сверху
+                        child: Image.asset('assets/images/weatherBig.png', width: 100.0),
+                      ),
+                      const SizedBox(width: 50),
                       Text(
-                        '-14°',
+                        'Sunny',
                         style: TextStyle(
-                            fontSize: 75.0,
+                            fontSize: 40.0,
                             fontWeight: FontWeight.bold,
                             color: Colors.lightBlue.shade900),
                       ),
                     ],
                   ),
-                  const SizedBox(height: 60),
+
+                  const SizedBox(height: 5),
                   const Wrap(
                     spacing: 20,
                     runSpacing: 20,
                     alignment: WrapAlignment.spaceBetween,
                     children: <Widget>[
+                      WeatherParameter(
+                        imagePath: 'assets/images/temperature.png',
+                        label: 'Temperature',
+                        value: '15°',
+                      ),
                       WeatherParameter(
                         imagePath: 'assets/images/wind.png',
                         label: 'Wind-speed',
@@ -130,19 +148,59 @@ class WeatherWidget extends StatelessWidget {
                         label: 'Humidity',
                         value: '40%',
                       ),
-                      WeatherParameter(
-                        imagePath: 'assets/images/visibility.png',
-                        label: 'Visability',
-                        value: '29 km',
-                      ),
                     ],
                   ),
                 ],
               ),
             ),
+
+            // Добавление нового контейнера с каруселью изображений и текстом здесь
+            Container(
+              margin: const EdgeInsets.symmetric(vertical: 20.0),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(bottom: 10), // Добавляем небольшой отступ между текстом и каруселью
+                    child: Text(
+                      "Liked outfits for today",
+                      style: TextStyle(
+                        fontSize: 24.0, // Размер шрифта
+                        fontWeight: FontWeight.bold, // Жирность шрифта
+                        color: Colors.black, // Цвет текста
+                      ),
+                    ),
+                  ),
+                  CarouselSlider(
+                    options: CarouselOptions(
+                      height: 200.0,
+                      autoPlay: true,
+                      aspectRatio: 16/9,
+                      enlargeCenterPage: true,
+                    ),
+                    items: [1,2,3,4].map((i) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
+                            width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                              color: Colors.amber,
+                            ),
+                            child: Image.asset('assets/images/photoLook$i.png', fit: BoxFit.cover), // Убедитесь, что у вас есть эти изображения в папке assets
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
+                ],
+              ),
+            ),
+
+
+
             // Кнопка "получить рекомендации"
             Padding(
-              padding: const EdgeInsets.fromLTRB(10, 50, 10, 20),
+              padding: const EdgeInsets.fromLTRB(15, 20, 15, 20),
               // Задает отступы: слева 10, сверху 20, справа 30, снизу 40
               child: ElevatedButton(
                 onPressed: () {
@@ -178,10 +236,12 @@ class WeatherWidget extends StatelessWidget {
                 ),
               ),
             ),
+
+            //Нижний контейнер
             Container(
               height: bottomContainerHeight,
               width: bottomContainerWidth,
-              margin: const EdgeInsets.fromLTRB(10, 25, 10, 0),
+              margin: const EdgeInsets.fromLTRB(15, 25, 15, 0),
               // Настраиваемые отступы для контейнера
               padding: const EdgeInsets.all(5),
               decoration: BoxDecoration(
@@ -209,7 +269,7 @@ class WeatherWidget extends StatelessWidget {
                         MaterialPageRoute(
                             builder: (context) =>
                                 RecommendationPage()), // Замените AnotherPage на реальный класс страницы
-                      ); // Действие при нажатии на первую кнопку
+                      ); // Действие при нажатии на вторую кнопку
                     },
                   ),
                   IconButton(
@@ -244,14 +304,14 @@ class WeatherParameter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(10),
+      padding: const EdgeInsets.all(5),
       decoration: BoxDecoration(
         color: Colors.white.withOpacity(0.9),
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
         children: <Widget>[
-          Image.asset(imagePath, width: 40),
+          Image.asset(imagePath, width: 30),
           const SizedBox(height: 8),
           Text(
             label,
@@ -261,7 +321,7 @@ class WeatherParameter extends StatelessWidget {
           Text(
             value,
             style: TextStyle(
-                fontSize: 27.0,
+                fontSize: 20.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.lightBlue.shade900),
           ),

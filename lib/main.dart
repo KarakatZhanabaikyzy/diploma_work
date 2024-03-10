@@ -1,7 +1,6 @@
-import 'package:diploma_work/ui/welcome.dart';
+import 'package:diploma_work/authorization_pages/welcome.dart';
 import 'package:flutter/material.dart';
-import 'widgets/weather_widget.dart';
-import 'widgets/style_widget.dart';
+import 'main_pages/weather_page.dart';
 
 void main() => runApp(WeatherApp());
 
@@ -23,7 +22,8 @@ class MainPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: WelcomeScreen(),
+        child: WeatherPage(),
+        //child: WelcomeScreen(),
       ),
     );
   }
