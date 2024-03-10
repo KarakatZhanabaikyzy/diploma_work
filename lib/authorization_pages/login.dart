@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:diploma_work/main_pages/weather_page.dart';
 import 'Registr.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginPage extends StatelessWidget {
   @override
@@ -54,11 +55,7 @@ class LoginPage extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => WeatherPage()),
-                );
-                // Добавьте логику входа
+                context.go('/weather');
               },
               child: Text('Login'),
               style: ElevatedButton.styleFrom(
@@ -70,12 +67,7 @@ class LoginPage extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => RegistrationPage()),
-                );
-
-                // Добавьте логику для перехода к регистрации
+                context.go('/registr');
               },
               child: Text("Don't have an account? Sign up"),
             ),

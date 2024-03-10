@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'Registr.dart';
 import 'login.dart';
+import 'package:go_router/go_router.dart';
 
 class WelcomeScreen extends StatelessWidget {
   @override
@@ -38,17 +39,11 @@ class WelcomeScreen extends StatelessWidget {
             ),
             const SizedBox(height: 40),
             buildButton(context, "Login", const Color(0xFFFFCC70), () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => LoginPage()),
-              );
+              context.go('/login');
             }),
             const SizedBox(height: 16),
             buildButton(context, "Create an account", const Color(0xFF7E7E7E), () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => RegistrationPage()),
-              );
+              context.go('/registr');
             }),
             const SizedBox(height: 40), // Отступ внизу
           ],
